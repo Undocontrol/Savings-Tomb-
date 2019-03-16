@@ -2,7 +2,7 @@
     <div class="balanceBlock">
       <h1>Total money spent this week is: £{{ calculateTotal.toFixed(2) }}</h1>
       <h1>Your spare change is: £{{ calculateChange.toFixed(2) }}</h1>
-      <button v-on:click="sendToTomb">Send to Tomb</button>
+      <button v-on:click="sendToTomb">Send To Tomb</button>
   </div>
 </template>
 
@@ -70,5 +70,19 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+button {
+  background:white;
+  border: 2px solid cornflowerblue;
+  border-radius: 5px;
+  color: black;
+  padding: 20px;
+}
+
+button:hover {
+  background-color: cornflowerblue;
+  color: white;
+  cursor: pointer;
+}
 
 </style>

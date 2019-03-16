@@ -46,4 +46,10 @@ export default {
   }
 }
 </script>
-
+<style scoped>
+.home {
+  background-image: url('/assets/background.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+</style>

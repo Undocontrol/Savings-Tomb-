@@ -46,16 +46,15 @@ export default {
 <style scoped>
 table {
   margin: 0 auto;
-  width: 50%;
-}
-
-td {
-  color: blue;
   width: 100%;
 }
 
+td {
+  color: cornflowerblue;
+}
+
 .title {
-  color: blue;
+  color:dodgerblue;
   font-size: 25px;
   text-decoration: underline;
 }
