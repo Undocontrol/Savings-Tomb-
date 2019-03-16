@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueMq from 'vue-mq'
+import UUID from 'vue-uuid';
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
@@ -15,6 +16,8 @@ Vue.use(VueMq, {
     lg: Infinity,
   }
 });
+
+Vue.use(UUID);
 
 new Vue({
   router,

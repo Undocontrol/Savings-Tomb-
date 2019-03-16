@@ -10,7 +10,9 @@
 
 <style>
 #app {
-  background-image: url("/assets/background.png");
+  background-image: url('/assets/background.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
   background-position: center top;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   position:relative;

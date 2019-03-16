@@ -34,11 +34,7 @@ export default {
   },
   methods: {
     fetchTransactions: async function () {
-      let result = await api.get('https://api-sandbox.starlingbank.com/api/v1/transactions', {
-        'Authorization': 'Bearer bdgoKkCKCV4nvCZNBTWBlq6noRfSaVxKGLW6bD4ldVLcGU5t7ElWz78SNMcRSAEV',
-        'Accept': 'application/json'
-      })
-
+      let result = await api.get('https://api-sandbox.starlingbank.com/api/v1/transactions')
       this.transactions = result._embedded.transactions
     },
     /*

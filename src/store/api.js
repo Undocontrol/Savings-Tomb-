@@ -1,9 +1,12 @@
 import axios from 'axios'
 
 export default {
-  get(url, headers) {
+  get(url) {
     return axios.get(url, {
-        headers: headers,
+        headers: {
+          'Authorization': 'Bearer bdgoKkCKCV4nvCZNBTWBlq6noRfSaVxKGLW6bD4ldVLcGU5t7ElWz78SNMcRSAEV',
+          'Accept': 'application/json'
+        },
         timeout: 5000
       })
       .then((response) => Promise.resolve(response.data))
@@ -14,10 +17,13 @@ export default {
 
     const options = {
       method: 'PUT',
-      headers: { 'content-type': 'application/json' },
+      headers: {
+        'Authorization': 'Bearer bdgoKkCKCV4nvCZNBTWBlq6noRfSaVxKGLW6bD4ldVLcGU5t7ElWz78SNMcRSAEV',
+        'Accept': 'application/json'
+      },
       data: request,
       timeout: 5000,
-      url,
+      url: url,
     };
     return axios(options)
       .then((response) => Promise.resolve(response))

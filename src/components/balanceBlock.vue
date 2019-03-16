@@ -1,42 +1,69 @@
 <template>
     <div class="balanceBlock">
-      <h1>Total money spent this week is: £{{ total.toFixed(2) }}</h1>
-      <h1>Your spare change is: £{{ change.toFixed(2) }}</h1>
+      <h1>Total money spent this week is: £{{ calculateTotal.toFixed(2) }}</h1>
+      <h1>Your spare change is: £{{ calculateChange.toFixed(2) }}</h1>
       <button v-on:click="sendToTomb">Send to Tomb</button>
   </div>
 </template>
 
 <script>
+import api from '@/store/api.js'
 
 export default {
   name: 'balance',
   props: {
     transactions: Array
   },
-  data() {
-    return {
-      total: 0,
-      change: 0
-    }
-  },
-  mounted: function () {
-    this.calculateValues();
-  },
-  methods: {
-    calculateValues: function() {
+  computed: {
+    calculateTotal: function() {
+      let total = 0;
       this.transactions.forEach((transaction) => {
         if(transaction.direction == 'OUTBOUND') {
-          this.total += Math.abs(transaction.amount);
-
-          let roundedUp = Math.ceil(transaction.amount)
-          let difference = roundedUp - transaction.amount
-
-          this.change += difference
+          total += Math.abs(transaction.amount);
         } 
       })
+      return total
     },
-    sendToTomb: function() {
-      alert('hi')
+    calculateChange: function() {
+      let change = 0;
+      this.transactions.forEach((transaction) => {
+        if(transaction.direction == 'OUTBOUND') {
+          //console.log('trnsaction amount', Math.abs(transaction.amount))
+          let roundedUp = Math.ceil(Math.abs(transaction.amount))
+          let difference = roundedUp - transaction.amount
+          //console.log('difference is', difference)
+          change += parseInt(difference)
+        } 
+      })
+      return change
+    }
+  },
+  methods: {
+    sendToTomb: async function() {
+
+      let goal = await api.put('https://api-sandbox.starlingbank.com/api/v2/account/e26bce59-cc5b-4cdf-0e0e-c4e3ef5e41fa/savings-goals', 
+        {
+          "currency": "GBP",
+          "name": "Tomb",
+          "target": {
+            "currency": "GBP",
+            "minorUnits": 5000
+          }
+        }
+      )
+
+      let transfer = await api.put(
+        `https://api-sandbox.starlingbank.com/api/v2/account/e26bce59-cc5b-4cdf-0e0e-c4e3ef5e41fa/savings-goals/${goal.data.savingsGoalUid}
+/add-money/${this.$uuid.v4()}`, 
+        {
+          "amount": {
+            "currency": "GBP",
+            "minorUnits": this.calculateChange
+          }
+        }
+      )
+
+      console.log(transfer);
     }
   }
 }
