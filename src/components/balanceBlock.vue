@@ -3,6 +3,7 @@
       <h1>Total money spent this week is: £{{ calculateTotal.toFixed(2) }}</h1>
       <h1>Your spare change is: £{{ calculateChange.toFixed(2) }}</h1>
       <button v-on:click="sendToTomb">Send To Tomb</button>
+      <img alt="mummyMoney logo" src="../assets/mummymoney.jpg"/>
   </div>
 </template>
 
@@ -76,6 +77,8 @@ button {
   border: 2px solid cornflowerblue;
   border-radius: 5px;
   color: black;
+  display: block;
+  margin: 0 auto;
   padding: 20px;
 }
 
@@ -83,6 +86,11 @@ button:hover {
   background-color: cornflowerblue;
   color: white;
   cursor: pointer;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
 }
 
 </style>
