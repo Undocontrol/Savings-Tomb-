@@ -1,12 +1,10 @@
 <template>
   <div class="home">
-    <contentBlock msg= "Savings Tomb"/>
+    <h1>Savings Tomb</h1>
     <img alt="Indy logo" src="../assets/indy.png"/>
-    <contentBlock tagline="Save your 'mummy'"/>
-    <contentBlock total= "Balance:"/>
-    <transactionsBlock balance="£4000.00"/>
-    <savingsBlock purpose="This saving is for....Pankor Palace"/>
-    <savingsBlock roundUp="You've made:"/>
+    <contentBlock />
+    <transactionsBlock v-bind:transactions="transactions" />
+    <balanceBlock v-bind:transactions="transactions" />
   </div>
 </template>
 
@@ -16,7 +14,7 @@ import contentBlock from '@/components/contentBlock.vue'
 import transactionsBlock from '@/components/transactionsBlock.vue'
 import balanceBlock from '@/components/balanceBlock.vue'
 import savingsBlock from '@/components/savingsBlock.vue'
-
+import api from '@/store/api.js'
 
 export default {
   name: 'home',
@@ -25,6 +23,30 @@ export default {
     transactionsBlock,
     balanceBlock,
     savingsBlock
+  },
+  data() {
+    return {
+      transactions: []
+    }
+  },
+  created: function () {
+    this.fetchTransactions();
+  },
+  methods: {
+    fetchTransactions: async function () {
+      let result = await api.get('https://api-sandbox.starlingbank.com/api/v1/transactions', {
+        'Authorization': 'Bearer bdgoKkCKCV4nvCZNBTWBlq6noRfSaVxKGLW6bD4ldVLcGU5t7ElWz78SNMcRSAEV',
+        'Accept': 'application/json'
+      })
+
+      this.transactions = result._embedded.transactions
+    },
+    /*
+    round: function(amount) {
+      let roundedUp = Math.ceil(amount)
+      this.count += roundedUp - amount
+      return roundedUp
+    }*/
   }
 }
 </script>

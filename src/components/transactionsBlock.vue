@@ -19,7 +19,7 @@
             <td>{{ transaction.balance }}</td>
           </tr>
           
-          
+
 
         </tbody>
       </table>
@@ -27,38 +27,16 @@
 </template>
 
 <script>
-import api from '@/store/api.js'
 
 export default {
   name: 'transactionsBlock',
   props: {
     balance: String,
-  },
-  data() {
-    return {
-      transactions: [],
-      count: 0
-    }
-  },
-  created: function () {
-    this.fetchTransactions();
+    transactions: Array
   },
   methods: {
-    fetchTransactions: async function () {
-      let result = await api.get('https://api-sandbox.starlingbank.com/api/v1/transactions', {
-        'Authorization': 'Bearer Ty19fN4rCEx58zksV7t48znv6dfrDv69icXUjfW2mPGpWRpx5fFMvMzvJcUqTofN',
-        'Accept': 'application/json'
-      })
-
-      this.transactions = result._embedded.transactions
-    },
     isInbound: function(transaction) {
       return transaction.direction == 'INBOUND'
-    },
-    round: function(amount) {
-      let roundedUp = Math.ceil(amount)
-      this.count += roundedUp - amount
-      return roundedUp
     }
   }
 }

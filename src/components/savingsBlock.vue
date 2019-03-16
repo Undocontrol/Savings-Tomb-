@@ -1,8 +1,4 @@
 <template>
-  <div class="savingsBlock">
-    <h1>{{ purpose }}</h1>
-    <h1>{{ roundUp }}</h1>
-  </div>
 </template>
 
 <script>

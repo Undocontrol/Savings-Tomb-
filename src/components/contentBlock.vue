@@ -1,8 +1,8 @@
 <template>
   <div class="contentBlock">
     <h1>{{ msg }}</h1>
-    <h2>{{ tagline }}</h2>
-    <h2>{{ total }}</h2>
+    <h2>Save your 'mummy'</h2>
+    <h2>Total Balance : £2235.65</h2>
   </div>
 </template>
 
