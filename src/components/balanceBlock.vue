@@ -8,8 +8,9 @@
       <h1>Your spare change is: £{{ (calculateChange / 100).toFixed(2) }}</h1>
       <button id="show-modal" @click="sendToTomb">Send to tomb</button>
 
-      <modal name="confirmation">
-        Congratulations Tomb Raider! You've added £{{ (calculateChange / 100).toFixed(2) }} to your Tomb.
+      <modal name="confirmation" class="modal">
+        <p>Congratulations Tomb Raider!</p>
+        <p>You've added £{{ (calculateChange / 100).toFixed(2) }} to your Tomb.</p>
         <button id="close-modal" @click="hideModal">OK</button>
       </modal>
   </div>
@@ -96,6 +97,15 @@ button:hover {
   background-color: rosybrown;
   color:whitesmoke;
   cursor: pointer;
+}
+
+.modal p {
+  color: rosybrown;
+  font-size: 30px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 15px;
 }
 
 </style>

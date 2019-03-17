@@ -5,7 +5,7 @@ File Overview:
 
 <template>
   <div class="home">
-    <contentBlock />
+    <contentBlock v-bind:transactions="transactions" />
     <transactionsBlock v-bind:transactions="transactions" />
     <balanceBlock v-bind:transactions="transactions" />
   </div>
@@ -23,8 +23,7 @@ export default {
   components: {
     contentBlock,
     transactionsBlock,
-    balanceBlock,
-    savingsBlock,
+    balanceBlock
   },
   data() {
     return {
