@@ -1,18 +1,12 @@
 <template>
-  <div class="contentBlock">
-    <h1>{{ msg }}</h1>
-    <h2>Save your 'mummy'</h2>
-    <h2>Total Balance : £2235.65</h2>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'contentBlock',
+  name: 'savingsBlock',
   props: {
-    msg: String,
-    tagline: String,
-    total: String
+    roundUp: String,
+    purpose: String
   }
 }
 </script>
@@ -28,5 +22,4 @@ h1 {
 h2 {
   font-size: 30px;
 }
-
 </style>
