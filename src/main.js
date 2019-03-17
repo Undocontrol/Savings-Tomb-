@@ -3,21 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import VueMq from 'vue-mq'
 import UUID from 'vue-uuid';
+import VModal from 'vue-js-modal'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
-Vue.use(VueMq, {
-  breakpoints: {
-    sm: 450,
-    md: 1250,
-    lg: Infinity,
-  }
-});
-
 Vue.use(UUID);
+Vue.use(VModal);
 
 new Vue({
   router,

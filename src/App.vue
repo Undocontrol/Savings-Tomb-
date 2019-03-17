@@ -1,3 +1,7 @@
+<!--
+File Overview
+* The app "bootstrapper". Loads and assembles the app together. 
+-->
 <template>
   <div id="app">
     <div id="nav">

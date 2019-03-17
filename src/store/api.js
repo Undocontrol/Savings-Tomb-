@@ -1,10 +1,15 @@
+/* 
+File Overview 
+* Provides an easy API utility to be used throughout the app.
+*/
 import axios from 'axios'
 
 export default {
   get(url) {
     return axios.get(url, {
+      //hardcoding access tokens for now
         headers: {
-          'Authorization': 'Bearer bdgoKkCKCV4nvCZNBTWBlq6noRfSaVxKGLW6bD4ldVLcGU5t7ElWz78SNMcRSAEV',
+          'Authorization': 'Bearer 12Gsq1doiT6TM34zpvXpDk66ET2mVq7wo8ztN6SUeEX9ANylnNML592RySzYLLJ0',
           'Accept': 'application/json'
         },
         timeout: 5000
@@ -17,8 +22,9 @@ export default {
 
     const options = {
       method: 'PUT',
+      //hardcoding access tokens for now
       headers: {
-        'Authorization': 'Bearer bdgoKkCKCV4nvCZNBTWBlq6noRfSaVxKGLW6bD4ldVLcGU5t7ElWz78SNMcRSAEV',
+        'Authorization': 'Bearer 12Gsq1doiT6TM34zpvXpDk66ET2mVq7wo8ztN6SUeEX9ANylnNML592RySzYLLJ0',
         'Accept': 'application/json'
       },
       data: request,

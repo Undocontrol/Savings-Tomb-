@@ -1,7 +1,10 @@
+<!--
+File Overview:
+* This is the main "view", and importing all components into this view.
+-->
+
 <template>
   <div class="home">
-    <h1>Savings Tomb</h1>
-    <img alt="Indy logo" src="../assets/indy.png"/>
     <contentBlock />
     <transactionsBlock v-bind:transactions="transactions" />
     <balanceBlock v-bind:transactions="transactions" />
@@ -13,7 +16,6 @@
 import contentBlock from '@/components/contentBlock.vue'
 import transactionsBlock from '@/components/transactionsBlock.vue'
 import balanceBlock from '@/components/balanceBlock.vue'
-import savingsBlock from '@/components/savingsBlock.vue'
 import api from '@/store/api.js'
 
 export default {
@@ -22,7 +24,7 @@ export default {
     contentBlock,
     transactionsBlock,
     balanceBlock,
-    savingsBlock
+    savingsBlock,
   },
   data() {
     return {
@@ -33,23 +35,18 @@ export default {
     this.fetchTransactions();
   },
   methods: {
+    /*
+    * Adds transaction lookup here so that it can filter down into the child components. 
+    */
     fetchTransactions: async function () {
       let result = await api.get('https://api-sandbox.starlingbank.com/api/v1/transactions')
       this.transactions = result._embedded.transactions
-    },
-    /*
-    round: function(amount) {
-      let roundedUp = Math.ceil(amount)
-      this.count += roundedUp - amount
-      return roundedUp
-    }*/
+    }
   }
 }
 </script>
 <style scoped>
-/*.home {
-  background-image: url('/assets/background.png');
-  background-repeat: no-repeat;
-  background-size: 100%;
-}*/
+.home {
+  background:snow;
+}
 </style>
